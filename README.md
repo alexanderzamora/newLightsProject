@@ -5,11 +5,11 @@ Using:
 - WS2812B strip
 - Python3
 
-Goals:
+## Goals:
 [ ] Decorate for Christmas
 [ ] Select effect to use on CMD
 
-To do:
+## To do:
 [x] make github for project
 
 [ ] CHRISTMAS LIGHTS
