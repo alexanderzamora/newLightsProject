@@ -51,7 +51,6 @@ class LightThread(threading.Thread):
 def get_input(master):
     in_string = input("Setting: ")
     if in_string == "exit":
-        master.exit_wait(master, prevThread)
         exit()
     if effect_map(master, in_string, True) == True:
         return in_string
