@@ -46,9 +46,13 @@ class LightThread(threading.Thread):
 
 # Call each loop. Gets input from user. Calls effect_map
 # with jc == True to test if input is a valid color or 
-# effect. Returns string if valid. Returns False if invalid
+# effect. Returns string if valid. Returns False if invalid.
+# Also handles exits because I say so
 def get_input(master):
     in_string = input("Setting: ")
+    if in_string == "exit":
+        master.exit_wait(master, prevThread)
+        exit()
     if effect_map(master, in_string, True) == True:
         return in_string
     else:
@@ -63,7 +67,7 @@ def effect_map(master, text, jc=False):
     # form "set <r> <g> <b>" such as:
     #      "set 123 255 0" or
     # form "set <color-name>"
-    if text[0:3] == "set":
+    if text[0:3].lower() == "set":
         textList = text[3:].split()
         r,g,b = get_rgb(textList)
         if r == None:
@@ -72,17 +76,17 @@ def effect_map(master, text, jc=False):
             if jc:
                 return True
             set_color(master, r, g, b)
-    elif text == "rainbow":
+    elif text.lower() == "rainbow":
         if jc:
             return True
         # print("set effect: {}".format(text))
         set_effect(master, text)
-    elif text == "breathe":
+    elif text.lower() == "breathe":
         if jc:
             return True
         # print("set effect: {}".format(text))
         set_effect(master, text)
-    elif text == "christmas":
+    elif text.lower() == "christmas":
         if jc:
             return True
         # print("set effect: {}".format(text))
