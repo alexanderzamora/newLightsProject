@@ -82,6 +82,11 @@ def effect_map(master, text, jc=False):
             return True
         # print("set effect: {}".format(text))
         set_effect(master, text)
+    elif text == "christmas":
+        if jc:
+            return True
+        # print("set effect: {}".format(text))
+        set_effect(master, text)
     else:
         return False
 
